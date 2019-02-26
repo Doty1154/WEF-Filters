@@ -1,0 +1,17 @@
+<QueryList>
+  <Query Id="0" Path="Security">
+    <Select Path="System">*[System[(EventID='7045')]]</Select>
+    <Select Path="Security">
+(*[EventData[Data[@Name="TargetUserName"] = "Administrators"]]) or
+(*[EventData[Data[@Name="TargetUserName"] = "Domain Admins"]]) or
+(*[EventData[Data[@Name="TargetUserName"] = "Schema Admins"]]) or
+(*[EventData[Data[@Name="TargetUserName"] = "Enterprise Admins"]]) or
+(*[EventData[Data[@Name="TargetUserName"] =  "Print Operators"]]) or
+(*[EventData[Data[@Name="TargetUserName"] = "Server Operators"]]) or
+(*[EventData[Data[@Name="TargetUserName"] = "Backup Operators"]])
+and
+*[System[(EventID='4732') or (EventID='4733') or (EventID='4756') or (EventID='4757') or (EventID='4728') or (EventID='4729')]]
+</Select>
+    <Select Path="Security">*[System[(EventID='1102')]]</Select>
+  </Query>
+</QueryList>
